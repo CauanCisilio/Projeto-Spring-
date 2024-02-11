@@ -1,7 +1,11 @@
 package br.com.cliente.spring.entity;
 
-import org.hibernate.annotations.GeneratorType;
+import java.util.Date;
 
+import org.hibernate.annotations.GeneratorType;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +23,17 @@ public class Cliente {
 	
 	private String email;
 	
-	private String cpf;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Column(name="dt_nascimento")
+	private Date dtNascimento;
+
+	public Date getDtNascimento() {
+		return dtNascimento;
+	}
+
+	public void setDtNascimento(Date dtNascimento) {
+		this.dtNascimento = dtNascimento;
+	}
 
 	public Long getId() {
 		return id;
@@ -45,12 +59,4 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	
 }

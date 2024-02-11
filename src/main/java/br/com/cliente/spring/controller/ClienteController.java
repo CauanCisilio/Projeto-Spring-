@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,16 +28,17 @@ public class ClienteController {
 		return "redirect:/cadastrarCliente";
 	}
 	
-	@DeleteMapping("/deleCliente/{id}")
-	public void deleteById() {
-		clienteService.deletaCliente(null);
-	}
-	
 	@RequestMapping("/clientes")
 	public ModelAndView findAll() {
 		ModelAndView mv = new ModelAndView("listaClientes");
 		Iterable <Cliente> clientes = clienteService.listaClientes();
 		mv.addObject("clientes",clientes);
 		return mv;
+	}
+	
+	@RequestMapping("/deletar")
+	public String deletarCliente(Long id) {
+		Cliente cliente = clienteService.deletaCliente(id);
+		return "redirect:/clientes";
 	}
 }

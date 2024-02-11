@@ -9,26 +9,26 @@
 </head>
 <body class="bg-light">
 
-<div class="container">
+<div class="container-fluid bg-dark">
   <ul class="nav">
     <li class="nav-item">
-      <a class="nav-link text-dark"  href="#">Home</a>
+      <a class="nav-link text-white"  href="#">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-dark" href="/cadastrarCliente">Cadastrar novo</a>
+      <a class="nav-link text-white" href="/cadastrarCliente">Cadastrar novo</a>
     </li>
   </ul>
-
+</div>
 <div class="container mt-5">
-  <h2>Clientes cadastrados</h2>      
-  
-   <table class="table table-striped mt-5">
+  <h2>Clientes cadastrados</h2>
+   <table class="table table-light white mt-5">
     <thead class="table-info">
       <tr>
         <th>ID</th>
         <th>Nome</th>
         <th>Email</th>
-        <th>CPF</th>
+        <th>Data de nascimento</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -36,11 +36,11 @@
         <td th:text="${cliente.id}"></td>
         <td th:text="${cliente.nome}"></td>
         <td th:text="${cliente.email}"></td>
-        <td th:text="${cliente.cpf}"></td>
+        <td th:text="${cliente.dtNascimento}"></td>
         <td>
-			<form action="deletarCliente" th:method="DELETE">
-			<a href=""><img src="./icones/iconLapis.png"></a>
-			</form>
+			    <a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('CC#deletarCliente').arg(0, cliente.id)).build()}">
+			       <img th:src="@{/images/iconLixeira.png}"/>
+			    </a>
 		</td>
       </tr>
     </tbody>
