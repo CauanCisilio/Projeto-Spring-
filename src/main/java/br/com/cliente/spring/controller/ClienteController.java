@@ -26,6 +26,11 @@ public class ClienteController {
 		return "redirect:/cadastrarCliente";
 	}
 	
+	@DeleteMapping("/deleCliente/{id}")
+	public void deleteById() {
+		clienteService.deletaCliente(null);
+	}
+	
 	@RequestMapping("/clientes")
 	public ModelAndView findAll() {
 		ModelAndView mv = new ModelAndView("listaClientes");
