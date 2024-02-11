@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.cliente.spring.entity.Cliente;
 import br.com.cliente.spring.service.ClienteService;
@@ -25,4 +26,11 @@ public class ClienteController {
 		return "redirect:/cadastrarCliente";
 	}
 	
+	@RequestMapping("/clientes")
+	public ModelAndView findAll() {
+		ModelAndView mv = new ModelAndView("listaClientes");
+		Iterable <Cliente> clientes = clienteService.listaClientes();
+		mv.addObject("clientes",clientes);
+		return mv;
+	}
 }
