@@ -1,6 +1,7 @@
 package br.com.cliente.spring.entity;
 
-import java.util.Date;
+
+import java.time.LocalDate;
 
 import org.hibernate.annotations.GeneratorType;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,6 +12,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name="clientes")
@@ -23,15 +26,14 @@ public class Cliente {
 	
 	private String email;
 	
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name="dt_nascimento")
-	private Date dtNascimento;
+	private LocalDate dtNascimento;
 
-	public Date getDtNascimento() {
+	public LocalDate getDtNascimento() {
 		return dtNascimento;
 	}
 
-	public void setDtNascimento(Date dtNascimento) {
+	public void setDtNascimento(LocalDate dtNascimento) {
 		this.dtNascimento = dtNascimento;
 	}
 

@@ -20,8 +20,8 @@
   </ul>
 </div>
 <div class="container mt-5">
-  <h2>Clientes cadastrados</h2>
-   <table class="table table-light white mt-5">
+  <h2 class="text-center">Clientes cadastrados</h2>
+   <table class="table table-light white mt-5 mx-auto w-75">
     <thead class="table-info">
       <tr>
         <th>ID</th>
@@ -36,11 +36,11 @@
         <td th:text="${cliente.id}"></td>
         <td th:text="${cliente.nome}"></td>
         <td th:text="${cliente.email}"></td>
-        <td th:text="${cliente.dtNascimento}"></td>
-        <td>
-			    <a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('CC#deletarCliente').arg(0, cliente.id)).build()}">
-			       <img th:src="@{/images/iconLixeira.png}"/>
-			    </a>
+       	<td th:text="${#temporals.format(cliente.dtNascimento, 'dd/MM/yyyy')}"></td>
+        <td>    
+			<a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('CC#deletarCliente').arg(0, cliente.id)).build()}">
+			   <img th:src="@{/images/iconLixeira.png}"/>
+			</a>
 		</td>
       </tr>
     </tbody>
