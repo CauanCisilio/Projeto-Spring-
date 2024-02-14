@@ -2,15 +2,18 @@ package br.com.cliente.spring.entity;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.hibernate.annotations.GeneratorType;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -28,6 +31,9 @@ public class Cliente {
 	
 	@Column(name="dt_nascimento")
 	private LocalDate dtNascimento;
+	
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<Pedido> pedidos;
 
 	public LocalDate getDtNascimento() {
 		return dtNascimento;
@@ -61,4 +67,13 @@ public class Cliente {
 		this.email = email;
 	}
 
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
+	
 }

@@ -14,13 +14,20 @@ public class ClienteService {
 	@Autowired
 	private ClienteRepository clienteRepository;
 	
+	@Autowired
+	private PedidoService pedidoService;
+	
 	public void cadastroCliente(Cliente cliente) {
 		clienteRepository.save(cliente);
 	}
 	
-	public List<Cliente>listaClientes(){
-		return clienteRepository.findAll();
-	}
+	public List<Cliente> listaClientes() {
+        List<Cliente> clientes = clienteRepository.findAll();
+        for (Cliente cliente : clientes) {
+            cliente.setPedidos(pedidoService.listaTodosPedidos());
+        }
+        return clientes;
+    }
 	
 	public Cliente deletaCliente(Long id) {
 		Optional<Cliente> clienteOptional = clienteRepository.findById(id);
