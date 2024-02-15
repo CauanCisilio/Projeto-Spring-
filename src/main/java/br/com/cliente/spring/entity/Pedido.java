@@ -1,5 +1,7 @@
 package br.com.cliente.spring.entity;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +21,9 @@ public class Pedido {
 	@Column(name="id_pedido")
 	private Long idPedido;
 	
+	@Column(name="data_pedido")
+	private LocalDate dataPedido;
+	
 	private Double preco;
 	
 	private int quantidade;
@@ -34,7 +39,15 @@ public class Pedido {
 	public void setIdPedido(Long idPedido) {
 		this.idPedido = idPedido;
 	}
-
+	
+	public LocalDate getDataPedido() {
+		return dataPedido;
+	}
+	public void setDataPedido() {
+		LocalDate dataSistema = LocalDate.now();
+		this.dataPedido = dataSistema;
+	}
+	
 	public Double getPreco() {
 		return preco;
 	}

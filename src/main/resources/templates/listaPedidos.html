@@ -17,7 +17,7 @@
 	      <a class="nav-link text-white" href="/cadastrarCliente">Cadastrar cliente</a>
 	    </li>
 	    <li class="nav-item">
-	      <a class="nav-link text-white" href="/pedidos">Ver pedidos novo</a>
+	      <a class="nav-link text-white" href="/pedidos">Ver pedidos</a>
 	    </li>
 	    <li class="nav-item">
 	      <a class="nav-link text-white" href="/clientes">Ver clientes</a>
@@ -25,12 +25,13 @@
   </ul>
 </div>
 <div class="container mt-5">
-  <h2 class="text-center">Clientes cadastrados</h2>
+  <h2 class="text-center">Pedidos registrados</h2>
 		<table class="table table-light white mt-5 mx-auto w-75">
 		    <thead class="table-info">
 		      <tr>
 		        <th>ID</th>
 		        <th>Quantidade</th>
+		        <th>Data do pedido</th>
 		        <th>Preço</th>
 		        <th>Cliente</th>
 		      </tr>
@@ -39,6 +40,7 @@
 		      <tr th:each="pedido : ${pedidos}">
 		        <td th:text="${pedido.idPedido}"></td>
 		        <td th:text="${pedido.quantidade}"></td>
+		        <td th:text="${#temporals.format(pedido.dataPedido, 'dd/MM/yyyy')}"></td>
 		        <td th:text="${pedido.preco}"></td>
 		       	<td th:text="${pedido.cliente.nome}"></td>
 		      </tr>
