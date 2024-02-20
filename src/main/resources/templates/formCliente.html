@@ -9,7 +9,7 @@
 <title>Cadastro de cliente</title>
 </head>
 <body>
-	<div class="container-fluid bg-dark">
+	<div class="container-fluid bg-dark p-3">
 		  <ul class="nav">
 				<li class="nav-item">
 			      	<a class="nav-link text-white"  href="#">Home</a>
@@ -18,16 +18,19 @@
 			      	<a class="nav-link text-white" href="/cadastrarCliente">Cadastrar cliente</a>
 			    </li>
 			    <li class="nav-item">
+			      	<a class="nav-link text-white" href="/produtos">Fazer pedido</a>
+			    </li>
+			    <li class="nav-item">
 			      	<a class="nav-link text-white" href="/pedidos">Ver pedidos</a>
 			    </li>
 			    <li class="nav-item">
 			     	<a class="nav-link text-white" href="/clientes">Ver clientes</a>
 			    </li>
 		  </ul>
-	</div>	  
+	</div>
 	<div class="container mt-5">
 		<h1>Cadastro de cliente</h1>
-		<form method="post" class="" onsubmit="return validarData()">
+		<form method="post" onsubmit="return validarData()">
 	<div class="mb-3 mt-3">
 		<label class="form-label">Nome</label>
 		<input type="text" name="nome" class="form-control">

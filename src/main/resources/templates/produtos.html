@@ -6,7 +6,7 @@
  rel="stylesheet"
  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
  <script type="text/javascript" th:src="@{/scripts/main.js}"></script>
-<title>Home</title>
+<title>Faça seu pedido</title>
 </head>
 <body>
 	<div class="container-fluid bg-dark p-3">
@@ -28,5 +28,20 @@
 			    </li>
 		  </ul>
 	</div>
+	<h2 class="text-center mt-5">Produtos</h2>
+	<div class="container m-5">
+	    
+            <div class="p-4" th:each="produto : ${produtos}">
+                <!-- Exibir o nome do produto -->
+	            <h3><span th:text="${produto.descricao}"></span></h3>
+	            <p>Preço: R$<span th:text="${#numbers.formatDecimal(produto.preco, 0, 2)}"></span></p>
+				<p>Quantidade:<span id="totalQuantidade${iterStat.index}">1</span></p>
+				<a>
+					 <img th:src="@{/images/iconCarrinho.png}"/>
+				</a>
+				<button class="btn btn-dark" onclick="incrementarQuantidade('${iterStat.index}')">+</button>
+				<button class="btn btn-dark" onclick="decrementarQuantidade('${iterStat.index}')">-</button>
+			</div>
+    </div>   
 </body>
 </html>
