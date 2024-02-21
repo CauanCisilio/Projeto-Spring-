@@ -7,8 +7,8 @@
  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <title>Lista de pedidos</title>
 </head>
-<body>
-<div class="container-fluid bg-dark p-3">
+<body class="bg-light">
+<div class="container-fluid bg-primary p-3">
 		  <ul class="nav">
 				<li class="nav-item">
 			      	<a class="nav-link text-white"  href="#">Home</a>
@@ -28,14 +28,14 @@
 		  </ul>
 	</div>
 <div class="container mt-5">
-  <h2 class="text-center">Pedidos registrados</h2>
-		<table class="table table-light white mt-5 mx-auto w-75">
-		    <thead class="table-info">
+  <h2>Pedidos registrados</h2>
+		<table class="table white mt-5 shadow-none p-3 mb-5 bg-white rounded">
+		    <thead>
 		      <tr>
-		        <th>ID</th>
+		        <th>código do pedido</th>
 		        <th>Quantidade</th>
 		        <th>Data do pedido</th>
-		        <th>Preço</th>
+		        <th>Total do pedido</th>
 		        <th>Cliente</th>
 		      </tr>
 		    </thead>
@@ -44,7 +44,7 @@
 		        <td th:text="${pedido.idPedido}"></td>
 		        <td th:text="${pedido.quantidade}"></td>
 		        <td th:text="${#temporals.format(pedido.dataPedido, 'dd/MM/yyyy')}"></td>
-		        <td th:text="${pedido.preco}"></td>
+		        <td>R$<span th:text="${#numbers.formatDecimal(pedido.valorTotal, 0, 2)}"></td>
 		       	<td th:text="${pedido.cliente.nome}"></td>
 		      </tr>
 		    </tbody>

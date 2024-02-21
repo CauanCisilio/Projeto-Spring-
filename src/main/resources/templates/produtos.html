@@ -8,8 +8,8 @@
  <script type="text/javascript" th:src="@{/scripts/main.js}"></script>
 <title>Faça seu pedido</title>
 </head>
-<body>
-	<div class="container-fluid bg-dark p-3">
+<body class="bg-light">
+	<div class="container-fluid bg-primary p-3">
 		  <ul class="nav">
 				<li class="nav-item">
 			      	<a class="nav-link text-white"  href="#">Home</a>
@@ -28,19 +28,19 @@
 			    </li>
 		  </ul>
 	</div>
-	<h2 class="text-center mt-5">Produtos</h2>
+	<div class="container m-5">
+		<h2>Produtos</h2>
+	</div>
 	<div class="container m-5">
 	    
-            <div class="p-4" th:each="produto : ${produtos}">
+            <div class="shadow-none p-3 mb-5 bg-white rounded" th:each="produto : ${produtos}">
                 <!-- Exibir o nome do produto -->
 	            <h3><span th:text="${produto.descricao}"></span></h3>
 	            <p>Preço: R$<span th:text="${#numbers.formatDecimal(produto.preco, 0, 2)}"></span></p>
-				<p>Quantidade:<span id="totalQuantidade${iterStat.index}">1</span></p>
-				<a>
-					 <img th:src="@{/images/iconCarrinho.png}"/>
+				<p>Disponivel em estoque: <span th:text="${produto.quantidade}"></p>
+				<a href="/pedir">
+					<img th:src="@{/images/iconCarrinho.png}"/>
 				</a>
-				<button class="btn btn-dark" onclick="incrementarQuantidade('${iterStat.index}')">+</button>
-				<button class="btn btn-dark" onclick="decrementarQuantidade('${iterStat.index}')">-</button>
 			</div>
     </div>   
 </body>

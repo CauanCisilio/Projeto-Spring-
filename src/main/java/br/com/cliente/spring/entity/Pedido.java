@@ -24,7 +24,8 @@ public class Pedido {
 	@Column(name="data_pedido")
 	private LocalDate dataPedido;
 	
-	private Double preco;
+	@Column(name="valor_total")
+	private Double valorTotal;
 	
 	private int quantidade;
 	
@@ -39,21 +40,21 @@ public class Pedido {
 	public void setIdPedido(Long idPedido) {
 		this.idPedido = idPedido;
 	}
-	
+
 	public LocalDate getDataPedido() {
 		return dataPedido;
 	}
-	public void setDataPedido() {
-		LocalDate dataSistema = LocalDate.now();
-		this.dataPedido = dataSistema;
-	}
-	
-	public Double getPreco() {
-		return preco;
+
+	public void setDataPedido(LocalDate dataPedido) {
+		this.dataPedido = dataPedido;
 	}
 
-	public void setPreco(Double preco) {
-		this.preco = preco;
+	public Double getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(Double valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 
 	public int getQuantidade() {
