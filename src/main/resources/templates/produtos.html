@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
- rel="stylesheet"
- integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
- <script type="text/javascript" th:src="@{/scripts/main.js}"></script>
-<title>Faça seu pedido</title>
+	<meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script type="text/javascript" th:src="@{/scripts/main.js}"></script>
+	<title>Faça seu pedido</title>
 </head>
+
 <body class="bg-light">
 	<div class="container-fluid bg-primary p-3">
-		  <ul class="nav">
-				<li class="nav-item">
-			      	<a class="nav-link text-white"  href="#">Home</a>
-			    </li>
-			    <li class="nav-item">
-			      	<a class="nav-link text-white" href="/cadastrarCliente">Cadastrar cliente</a>
-			    </li>
-			    <li class="nav-item">
-			      	<a class="nav-link text-white" href="/produtos">Fazer pedido</a>
-			    </li>
-			    <li class="nav-item">
-			      	<a class="nav-link text-white" href="/pedidos">Ver pedidos</a>
-			    </li>
-			    <li class="nav-item">
-			     	<a class="nav-link text-white" href="/clientes">Ver clientes</a>
-			    </li>
-		  </ul>
+		<ul class="nav">
+			<li class="nav-item">
+				<a class="nav-link text-white" href="#">Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/cadastrarCliente">Cadastrar cliente</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/produtos">Fazer pedido</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/pedidos">Ver pedidos</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/clientes">Ver clientes</a>
+			</li>
+		</ul>
 	</div>
 	<div class="container m-5">
 		<h2>Produtos</h2>
 	</div>
 	<div class="container m-5">
-	    
-            <div class="shadow-none p-3 mb-5 bg-white rounded" th:each="produto : ${produtos}">
-                <!-- Exibir o nome do produto -->
-	            <h3><span th:text="${produto.descricao}"></span></h3>
-	            <p>Preço: R$<span th:text="${#numbers.formatDecimal(produto.preco, 0, 2)}"></span></p>
-				<p>Disponivel em estoque: <span th:text="${produto.quantidade}"></p>
-				<a href="/pedir">
-					<img th:src="@{/images/iconCarrinho.png}"/>
-				</a>
-			</div>
-    </div>   
+
+		<div class="shadow-none p-3 mb-5 bg-white rounded" th:each="produto : ${produtos}">
+			<!-- Exibir o nome do produto -->
+			<h3><span th:text="${produto.descricao}"></span></h3>
+			<p>Preço: R$<span th:text="${#numbers.formatDecimal(produto.preco, 0, 2)}"></span></p>
+			<p>Disponivel em estoque: <span th:text="${produto.quantidade}"></p>
+			<a href="/pedir">
+				<img th:src="@{/images/iconCarrinho.png}" />
+			</a>
+		</div>
+	</div>
 </body>
+
 </html>

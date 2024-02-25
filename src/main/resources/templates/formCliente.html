@@ -1,51 +1,53 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
- rel="stylesheet"
- integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
- <script type="text/javascript" th:src="@{/scripts/main.js}"></script>
-<title>Cadastro de cliente</title>
+	<meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script type="text/javascript" th:src="@{/scripts/main.js}"></script>
+	<title>Cadastro de cliente</title>
 </head>
+
 <body>
 	<div class="container-fluid bg-primary p-3">
-		  <ul class="nav">
-				<li class="nav-item">
-			      	<a class="nav-link text-white"  href="#">Home</a>
-			    </li>
-			    <li class="nav-item">
-			      	<a class="nav-link text-white" href="/cadastrarCliente">Cadastrar cliente</a>
-			    </li>
-			    <li class="nav-item">
-			      	<a class="nav-link text-white" href="/produtos">Fazer pedido</a>
-			    </li>
-			    <li class="nav-item">
-			      	<a class="nav-link text-white" href="/pedidos">Ver pedidos</a>
-			    </li>
-			    <li class="nav-item">
-			     	<a class="nav-link text-white" href="/clientes">Ver clientes</a>
-			    </li>
-		  </ul>
+		<ul class="nav">
+			<li class="nav-item">
+				<a class="nav-link text-white" href="#">Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/cadastrarCliente">Cadastrar cliente</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/produtos">Fazer pedido</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/pedidos">Ver pedidos</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/clientes">Ver clientes</a>
+			</li>
+		</ul>
 	</div>
 	<div class="container mt-5">
 		<h1>Cadastro de cliente</h1>
 		<form method="post" onsubmit="return validarData()">
-	<div class="mb-3 mt-3">
-		<label class="form-label">Nome</label>
-		<input type="text" name="nome" class="form-control">
-	</div>	
-	<div class="mb-3 mt-3">
-		<label class="form-label">Email</label>
-		<input type="text" name="email" class="form-control">
-	</div>	
-	<div class="mb-3 mt-3">
-		<label class="form-label">Data de nascimento</label>
-		<input type="text" name="dtNascimento" id="dtNascimento"
-		 class="form-control" placeholder="dd/MM/yyyy" onkeypress="mascaraData( this, event )" maxlength="10">
-	</div>	
-		<button type="submit" class="btn bg-dark text-white">Cadastrar</button>
-	</form>
+			<div class="mb-3 mt-3">
+				<label class="form-label">Nome</label>
+				<input type="text" name="nome" class="form-control">
+			</div>
+			<div class="mb-3 mt-3">
+				<label class="form-label">Email</label>
+				<input type="text" name="email" class="form-control">
+			</div>
+			<div class="mb-3 mt-3">
+				<label class="form-label">Data de nascimento</label>
+				<input type="text" name="dtNascimento" id="dtNascimento" class="form-control" placeholder="dd/MM/yyyy"
+					onkeypress="mascaraData( this, event )" maxlength="10">
+			</div>
+			<button type="submit" class="btn bg-dark text-white">Cadastrar</button>
+		</form>
 	</div>
 </body>
+
 </html>

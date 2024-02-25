@@ -1,6 +1,7 @@
 package br.com.cliente.spring.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,17 +12,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.cliente.spring.entity.Cliente;
 import br.com.cliente.spring.entity.Pedido;
+import br.com.cliente.spring.repository.PedidoRepository;
 import br.com.cliente.spring.service.ClienteService;
 import br.com.cliente.spring.service.PedidoService;
+import java.util.ArrayList;
+
 
 @Controller
 public class PedidoController {
     @Autowired
     private PedidoService pedidoService;
+
+    @Autowired PedidoRepository repository;
     
     @Autowired
     private ClienteService clienteService;
@@ -61,5 +68,16 @@ public class PedidoController {
         return "redirect:/pedidos"; 
     }
     
+    @GetMapping("/pedidos/{id}")
+    public ModelAndView buscaPorId(@PathVariable("id") Long id) {
+        ModelAndView mv = new ModelAndView("listaPedidos");
+        Pedido pedido = repository.encontraPessoa(id);
+        List<Pedido> pedidos = new ArrayList<>();
+        if (pedido != null) {
+            pedidos.add(pedido);
+        }
+        mv.addObject("pedidos", pedidos);
+        return mv;
+    }
     
 }
