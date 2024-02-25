@@ -30,8 +30,8 @@
 	</div>
 	<div class="container mt-5">
 		<h2>Pedidos registrados</h2>
-		<form method="get" th:action="@{/pedidos/{id}(id=*{id})}">
-            <input type="text" name="id" class="mt-4 form-control w-25">
+		<form method="get" th:action="@{/pedidos/{id}(id=${id})}">
+            <input type="text" name="id" th:value="${id}" class="mt-4 form-control w-25" placeholder="digite o codigo do pedido">
             <button class="btn btn-dark mt-3" type="submit">Buscar pedido</button>
         </form>
 		<table class="table white mt-5 shadow-none p-3 mb-5 bg-white rounded">

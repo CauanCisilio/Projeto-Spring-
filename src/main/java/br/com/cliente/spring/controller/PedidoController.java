@@ -68,14 +68,16 @@ public class PedidoController {
         return "redirect:/pedidos"; 
     }
     
-    @GetMapping("/pedidos/{id}")
-    public ModelAndView buscaPorId(@PathVariable("id") Long id) {
+    @GetMapping("/pedidos/")
+    public ModelAndView buscaPorId(@RequestParam("id") Long id) {
         ModelAndView mv = new ModelAndView("listaPedidos");
-        Pedido pedido = repository.encontraPessoa(id);
+        Pedido pedido = repository.encontraPedido(id);
         List<Pedido> pedidos = new ArrayList<>();
         if (pedido != null) {
             pedidos.add(pedido);
-        }
+        }if(pedido ==null){
+
+        }   
         mv.addObject("pedidos", pedidos);
         return mv;
     }
